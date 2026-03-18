@@ -54,18 +54,18 @@ body::before {
   pointer-events: none;
   width: 420px;
   display: none;
-
+  mix-blend-mode: multiply;
 }
 .bunting-corner.right {
-  top: 10px;
+  top: 60px;
   right: 0;
-  transform: rotate(25deg);
+  transform: rotate(45deg);
   transform-origin: top right;
 }
 .bunting-corner.left {
-  top: 10px;
+  top: 60px;
   left: 0;
-  transform: rotate(-25deg);
+  transform: rotate(-45deg);
   transform-origin: top left;
 }
 
@@ -77,8 +77,8 @@ body::before {
   }
   /* تصغير الزينة */
   .bunting-corner {
-    width: 150px;
-    top: 10px;
+    width: 180px;
+    top: 60px;
   }
   /* تصغير اللمبات بشكل كبير */
   .bulb {
@@ -112,8 +112,6 @@ body::before {
   #lights-page1 .light-unit:nth-child(18),
   #lights-page1 .light-unit:nth-child(19),
   #lights-page1 .light-unit:nth-child(20),
-  #lights-page1 .light-unit:nth-child(19),
-  #lights-page1 .light-unit:nth-child(20),
   #lights-page1 .light-unit:nth-child(21),
   #lights-page1 .light-unit:nth-child(22) {
     display: none;
@@ -125,16 +123,13 @@ body::before {
   /* إخفاء أول 2 يسار وآخر 2 يمين في page1 فقط */
   #lights-page1 .light-unit:nth-child(1),
   #lights-page1 .light-unit:nth-child(2),
-  #lights-page1 .light-unit:nth-child(19),
-  #lights-page1 .light-unit:nth-child(20),
   #lights-page1 .light-unit:nth-child(21),
   #lights-page1 .light-unit:nth-child(22) {
     display: none;
   }
   /* دفع الزينة اليمين لليمين أكثر */
   .bunting-corner.right {
-    right: 0px;
-    top: 55px;
+    right: -30px;
   }
 }
 
