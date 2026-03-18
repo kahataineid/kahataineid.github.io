@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بطاقة تهنئة العيد - كهاتين</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- لمبات الصفحة الأولى -->
+  <div id="lights-page1" style="display:none;">
+    <div class="wire-container">
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+    </div>
+  </div>
+
+  <!-- زينة أركان الصفحة الأولى -->
+  <img src="images/bunting.png" class="bunting-corner right" id="bunting-right" alt="">
+  <img src="images/bunting.png" class="bunting-corner left"  id="bunting-left"  alt="">
+
+  <!-- اللمبات - للصفحة الثانية -->
+  <div id="lights-wrap">
+    <div class="wire-container">
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+      <div class="light-unit"><div class="socket"></div><div class="bulb"></div></div>
+    </div>
+  </div>
+
+  <!-- إعلان العيد -->
+  <div id="eid-overlay">
+    <div class="ad-wrapper">
+      <div class="ad-wait-text">انتظر قليلاً لنحتفل معك..</div>
+      <div class="ad-box">
+        <img src="images/eid_card.png" alt="عيد مبارك - كهاتين">
+        <div id="eid-timer">⏱ 5</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- المحتوى -->
+  <div class="main-content">
+
+    <section id="page1" class="page active">
+      <div class="form-card">
+        <div class="arch">
+          <h2>أهلاً بك</h2>
+          <p>فضلاً أدخل اسمك لاستلام بطاقتك</p>
+        </div>
+        <div class="card-body">
+          <form id="nameForm">
+            <input type="text" placeholder="اسمك هنا" id="nameInput" required>
+            <button type="submit" class="btn-main">متابعة ←</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="page2" class="page">
+      <div class="card">
+        <img src="images/ramadan.jpg" class="greeting-img" alt="بطاقة التهنئة">
+        <div class="employee-name" id="employeeName"></div>
+      </div>
+      <button id="saveBtn">⬇ حفظ الصورة</button>
+      <canvas id="canvas" style="display:none;"></canvas>
+      <img src="images/logo.webp" class="society-logo" alt="شعار كهاتين">
+    </section>
+
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
