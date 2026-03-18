@@ -112,6 +112,7 @@ body::before {
   #lights-page1 .light-unit:nth-child(18),
   #lights-page1 .light-unit:nth-child(19),
   #lights-page1 .light-unit:nth-child(20),
+  #lights-page1 .light-unit:nth-child(19),
   #lights-page1 .light-unit:nth-child(20),
   #lights-page1 .light-unit:nth-child(21),
   #lights-page1 .light-unit:nth-child(22) {
@@ -124,6 +125,7 @@ body::before {
   /* إخفاء أول 2 يسار وآخر 2 يمين في page1 فقط */
   #lights-page1 .light-unit:nth-child(1),
   #lights-page1 .light-unit:nth-child(2),
+  #lights-page1 .light-unit:nth-child(19),
   #lights-page1 .light-unit:nth-child(20),
   #lights-page1 .light-unit:nth-child(21),
   #lights-page1 .light-unit:nth-child(22) {
