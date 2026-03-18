@@ -57,15 +57,15 @@ body::before {
 
 }
 .bunting-corner.right {
-  top: 60px;
-  right: 0;
-  transform: rotate(45deg);
+  top: -20px;
+  right: -20px;
+  transform: rotate(15deg);
   transform-origin: top right;
 }
 .bunting-corner.left {
-  top: 60px;
-  left: 0;
-  transform: rotate(-45deg);
+  top: -20px;
+  left: -20px;
+  transform: rotate(-15deg);
   transform-origin: top left;
 }
 
