@@ -1,79 +1,94 @@
-// ====== عداد الإعلان ======
-(function () {
-  var s  = 5;
-  var t  = document.getElementById('eid-timer');
-  var o  = document.getElementById('eid-overlay');
+var cards = {
+  1: {
+  src: 'images/adha_card.png',
+  nameX: 0.50,
+  nameY: 0.870,
+  fontSize: 20,
+  maxWidthRatio: 0.52,
+  nameColor: '#ffffff',
+  previewTop: '85%'
+},
+  2: {
+    src: 'images/new_adha_card.png',
 
-  var iv = setInterval(function () {
-    s--;
-    t.textContent = '⏱ ' + s;
-    if (s <= 0) {
-      clearInterval(iv);
-      o.style.opacity = '0';
-      setTimeout(function () {
-        o.style.display = 'none';
-        document.getElementById('lights-page1').style.display = 'block';
-        document.getElementById('bunting-right').style.display = 'block';
-        document.getElementById('bunting-left').style.display  = 'block';
-        document.getElementById('lights-wrap').style.display   = 'none';
-      }, 600);
-    }
-  }, 1000);
-})();
+    /* بعد الحفظ */
+    nameX: 0.50,
+    nameY: 0.870,
+    fontSize: 20,
 
-// ====== الموقع الرئيسي ======
-const nameForm     = document.getElementById("nameForm");
-const nameInput    = document.getElementById("nameInput");
-const employeeName = document.getElementById("employeeName");
-const saveBtn      = document.getElementById("saveBtn");
-const canvas       = document.getElementById("canvas");
-const img          = document.querySelector(".greeting-img");
+    maxWidthRatio: 0.52,
+    nameColor: '#ffffff',
 
-nameForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  var name = nameInput.value.trim();
-  if (!name) return;
+    /* قبل الحفظ */
+    previewTop: '85%',
+    previewLeft: '55%'
+  }
+};
 
-  employeeName.textContent = name;
-  document.getElementById("page1").classList.remove("active");
-  document.getElementById("page2").classList.add("active");
-  document.getElementById('lights-page1').style.display = 'none';
-  document.getElementById('bunting-right').style.display = 'none';
-  document.getElementById('bunting-left').style.display  = 'none';
-  document.getElementById('lights-wrap').style.display   = 'block';
+var selectedCard = 1;
+
+function selectCard(num) {
+  selectedCard = num;
+
+  document.getElementById('previewImg').src = cards[num].src;
+
+  document.getElementById('employeeName').style.top =
+    cards[num].previewTop;
+
+  document.getElementById('employeeName').style.left =
+    cards[num].previewLeft || '55%';
+
+  
+
+  document.getElementById('thumb1').classList.toggle('active', num === 1);
+  document.getElementById('thumb2').classList.toggle('active', num === 2);
+}
+
+document.getElementById('nameInput').addEventListener('input', function () {
+  document.getElementById('employeeName').textContent = this.value;
+  document.getElementById('error-msg').style.display = 'none';
 });
 
-saveBtn.addEventListener("click", async function () {
-  if (!img.complete) { alert("الصورة لم تتحمل بعد"); return; }
+async function downloadCard() {
+  var name = document.getElementById('nameInput').value.trim();
+  if (!name) {
+    document.getElementById('error-msg').style.display = 'block';
+    document.getElementById('nameInput').focus();
+    return;
+  }
+
+  var img = document.getElementById('previewImg');
+  if (!img.complete) { alert('الصورة لم تتحمل بعد'); return; }
 
   try {
-    await document.fonts.load("bold 15px PingARBold");
+    await document.fonts.load('bold 40px PingARBold');
     await document.fonts.ready;
   } catch(e) {}
 
-  const nW = img.naturalWidth;
-  const nH = img.naturalHeight;
-
+  var cfg = cards[selectedCard];
+  var canvas = document.getElementById('canvas');
+  var nW = img.naturalWidth;
+  var nH = img.naturalHeight;
   canvas.width  = nW;
   canvas.height = nH;
 
-  const ctx = canvas.getContext("2d");
+  var ctx = canvas.getContext('2d');
   ctx.drawImage(img, 0, 0, nW, nH);
 
-  const isMobile = window.innerWidth <= 900;
-  const RECT_X   = nW * 0.50;
-  const RECT_Y   = nH * (isMobile ? 0.862 : 0.864);
-  const fontSize = Math.round(15 * (nW / 380));
-  const maxWidth = nW * 0.52;
+  var RECT_X   = nW * cfg.nameX;
+  var RECT_Y   = nH * cfg.nameY;
+  // حجم الخط بناءً على عرض الصورة الفعلي (4500px)
+  var fontSize = Math.round(cfg.fontSize * (nW / 380));
+  var maxWidth = nW * cfg.maxWidthRatio;
 
-  ctx.font         = `${fontSize}px PingARBold, Cairo, Arial, sans-serif`;
-  ctx.fillStyle    = "#ffffff";
-  ctx.textAlign    = "center";
-  ctx.textBaseline = "middle";
-  ctx.fillText(employeeName.textContent, RECT_X, RECT_Y, maxWidth);
+  ctx.font         = fontSize + 'px PingARBold, Cairo, Arial, sans-serif';
+  ctx.fillStyle    = cfg.nameColor;
+  ctx.textAlign    = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(name, RECT_X, RECT_Y, maxWidth);
 
-  const a    = document.createElement("a");
-  a.download = "eid_card.png";
-  a.href     = canvas.toDataURL("image/png");
+  var a    = document.createElement('a');
+  a.download = 'eid_card.png';
+  a.href     = canvas.toDataURL('image/png');
   a.click();
-});
+}

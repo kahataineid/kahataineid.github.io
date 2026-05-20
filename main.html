@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بطاقة تهنئة عيد الأضحى - كهاتين</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main-wrapper">
+    <div class="split-card">
+
+      <!-- يسار: معاينة البطاقة المختارة -->
+      <div class="card-image-side">
+        <div class="card-preview">
+          <img src="images/adha_card.png" class="greeting-img" id="previewImg" alt="بطاقة التهنئة">
+          <div class="employee-name" id="employeeName"></div>
+        </div>
+      </div>
+
+      <!-- يمين: الفورم -->
+      <div class="card-form-side">
+        <div class="form-inner">
+          <div class="form-logo">
+            <img src="images/logo.webp" alt="شعار كهاتين">
+          </div>
+          <h2>أهلاً بك 👋</h2>
+          <p>أدخل اسمك لتحميل بطاقتك الشخصية</p>
+
+          <!-- اختيار البطاقة -->
+          <p class="picker-label">اختر البطاقة</p>
+          <div class="card-picker">
+            <div class="card-thumb active" id="thumb1" onclick="selectCard(1)">
+              <img src="images/adha_card.png" alt="بطاقة 1">
+              <span>بطاقة ١</span>
+            </div>
+            <div class="card-thumb" id="thumb2" onclick="selectCard(2)">
+              <img src="images/new_adha_card.png" alt="بطاقة 2">
+              <span>بطاقة ٢</span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <input type="text" id="nameInput" placeholder="اسمك هنا" maxlength="40">
+            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <button id="downloadBtn" onclick="downloadCard()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            تحميل البطاقة
+          </button>
+          <p id="error-msg" style="display:none; color:#e05a3a; font-size:13px; margin-top:8px; text-align:center;">الرجاء إدخال اسمك أولاً</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <canvas id="canvas" style="display:none;"></canvas>
+  <script src="script.js" defer></script>
+</body>
+</html>
